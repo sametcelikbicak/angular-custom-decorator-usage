@@ -1,4 +1,5 @@
 import { Component, Input, VERSION } from '@angular/core';
+import { Required } from '../decorators/required.decorator';
 
 @Component({
   selector: 'app-greeter',
@@ -6,6 +7,6 @@ import { Component, Input, VERSION } from '@angular/core';
   styleUrls: ['./greeter.component.css'],
 })
 export class GreeterComponent {
-  @Input() public name: string;
+  @Input() @Required public name: string;
   @Input() public message: string;
 }
