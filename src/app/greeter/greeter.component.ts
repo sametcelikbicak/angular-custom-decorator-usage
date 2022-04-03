@@ -2,7 +2,7 @@ import { Component, Input, VERSION } from '@angular/core';
 import { Required } from '../decorators/required.decorator';
 
 @Component({
-  selector: 'app-greeter',
+  selector: 'app-greeter[message]',
   templateUrl: './greeter.component.html',
   styleUrls: ['./greeter.component.css'],
 })
