@@ -1,19 +1,19 @@
-export function Log(): ClassDecorator {
-  return function (constructor: any) {
-    const LIFECYCLE_HOOKS = ['ngOnInit', 'ngOnChanges', 'ngOnDestroy'];
-    const component = constructor.name;
+export function Log(): MethodDecorator {
+  return function (target: Function, key: string, descriptor: any) {
+    const originalMethod = descriptor.value;
 
-    LIFECYCLE_HOOKS.forEach((hook) => {
-      const original = constructor.prototype[hook];
+    descriptor.value = function (...args: any[]) {
+      console.log(` -> Entering ${key} method`);
+      console.log(
+        `%c ${key} method args:${args}`,
+        'background:green;color:white'
+      );
+      const result = originalMethod.apply(this, args);
+      console.log(` <- Leaving ${key} method`);
 
-      constructor.prototype[hook] = (...args: any) => {
-        console.log(
-          `%c ${component} - ${hook}`,
-          `color: #4CAF50; font-weight: bold`,
-          ...args
-        );
-        original && original.apply(this, args);
-      };
-    });
+      return result;
+    };
+
+    return descriptor;
   };
 }

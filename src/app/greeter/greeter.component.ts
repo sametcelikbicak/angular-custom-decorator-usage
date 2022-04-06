@@ -7,7 +7,6 @@ import { Required } from '../decorators/required.decorator';
   templateUrl: './greeter.component.html',
   styleUrls: ['./greeter.component.css'],
 })
-@Log()
 export class GreeterComponent {
   @Input() @Required public name: string;
   @Input() public message: string;
