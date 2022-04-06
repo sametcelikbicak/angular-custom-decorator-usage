@@ -1,4 +1,5 @@
-import { Component, Input, VERSION } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Log } from '../decorators/log.decorator';
 import { Required } from '../decorators/required.decorator';
 
 @Component({
@@ -6,6 +7,7 @@ import { Required } from '../decorators/required.decorator';
   templateUrl: './greeter.component.html',
   styleUrls: ['./greeter.component.css'],
 })
+@Log()
 export class GreeterComponent {
   @Input() @Required public name: string;
   @Input() public message: string;
