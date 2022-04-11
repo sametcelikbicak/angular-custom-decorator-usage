@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
     this.sayHi('Hi', 'Samet');
   }
 
-  @Log()
+  @Log({ color: 'red' })
   public sayHi(message: string, name: string): void {
     console.log(message, name);
   }
